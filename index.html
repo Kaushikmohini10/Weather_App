@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beautiful Weather App</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="template-midnight">
+  <div class="app">
+    <div class="container">
+      <div class="card">
+        <div class="header-row">
+          <div>
+            <h2>Weather & Templates</h2>
+            <div class="small">Beautiful themes, quick search, geolocation & forecast</div>
+          </div>
+          <div class="unit-switch">
+            <div class="small">Units</div>
+            <div class="unit-buttons">
+              <button id="cBtn" class="btn">°C</button>
+              <button id="fBtn" class="btn inactive">°F</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-row">
+          <input id="cityInput" placeholder="Search city or postal code" />
+          <button id="searchBtn" class="btn">Search</button>
+          <button id="geoBtn" title="Use my location" class="btn secondary">📍</button>
+        </div>
+
+        <div id="error" class="error" style="display:none"></div>
+
+        <div class="current">
+          
+          <div id="bigIconContainer" class="weather-icon-current"></div>
+
+          <div class="weather-info">
+            <div class="location-row">
+              <div>
+                <div id="locationName" class="location">—</div>
+                <div id="localTime" class="small">—</div>
+              </div>
+              <div class="temp-block">
+                <div id="tempNow" class="temp-big">--°</div>
+                <div id="feelsLike" class="small-muted">Feels like --</div>
+              </div>
+            </div>
+            <div id="desc" class="desc">—</div>
+            <div class="details">
+              <div class="detail-item">Humidity: <span id="humidity">--%</span></div>
+              <div class="detail-item">Wind: <span id="wind">--</span></div>
+              <div class="detail-item">Pressure: <span id="pressure">-- hPa</span></div>
+              <div class="detail-item">Sunrise/Sunset: <span id="sun">-- / --</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card forecast">
+        <div class="forecast-top">
+          <div>
+            <h3>5-day Forecast (3h Intervals)</h3> 
+            <div class="small">Scroll → to see more</div>
+          </div>
+          <div class="theme-switch">
+            <button class="theme-btn" data-theme="template-midnight"
+                    style="background:linear-gradient(135deg,#0f2027,#203a43)"></button>
+            <button class="theme-btn" data-theme="template-ocean"
+                    style="background:linear-gradient(135deg,#2b5876,#4e4376)"></button>
+            <button class="theme-btn" data-theme="template-sunset"
+                    style="background:linear-gradient(135deg,#ff9a9e,#fecfef)"></button>
+            <button class="theme-btn" data-theme="template-aurora"
+                    style="background:linear-gradient(135deg,#0f0c29,#302b63)"></button>
+          </div>
+        </div>
+        <div class="forecast-list" id="forecastList"></div>
+        <footer><span>Data from OpenWeatherMap</span></footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="server.js"></script>
+</body>
+</html>

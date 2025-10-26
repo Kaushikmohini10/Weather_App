@@ -1,0 +1,116 @@
+:root {
+  --bg: linear-gradient(135deg,#1f2937 0%, #111827 100%);
+  --card-bg: rgba(255,255,255,0.06);
+  --accent: #60a5fa;
+  --muted: rgba(255,255,255,0.85);
+  font-family: 'Inter', sans-serif;
+  color-scheme: dark;
+}
+
+/* Theme templates */
+body.template-sunset { --bg: linear-gradient(135deg,#ff9a9e,#fecfef); --accent:#ff7a59; --muted:#222; color-scheme: light; }
+body.template-ocean { --bg: linear-gradient(135deg,#2b5876,#4e4376); --accent:#34d399; }
+body.template-midnight { --bg: linear-gradient(135deg,#0f2027,#203a43); --accent:#60a5fa; }
+body.template-aurora { --bg: linear-gradient(135deg,#0f0c29,#302b63,#24243e); --accent:#7ef9a3; }
+
+html,body { margin:0; padding:0; height:100%; background:var(--bg); color:var(--muted); }
+
+.app { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
+.container { display:grid; grid-template-columns: 360px 1fr; gap:20px; max-width:1000px; width:100%; }
+
+.card { background:rgba(255,255,255,0.06); border-radius:18px; padding:18px; backdrop-filter: blur(10px); }
+
+.header-row { display:flex; justify-content:space-between; align-items:center; }
+.unit-buttons { display:flex; gap:6px; }
+.btn { background:var(--accent); color:white; padding:8px 12px; border:none; border-radius:10px; cursor:pointer; }
+.btn.inactive { background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.2); }
+.btn.secondary { background:transparent; border:1px solid rgba(255,255,255,0.3); }
+
+.search-row { display:flex; gap:8px; margin:12px 0; }
+.search-row input { flex:1; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,0.2); background:transparent; color:inherit; }
+
+.current { display:flex; gap:14px; align-items:flex-start; } 
+
+/* Icon containers for current weather */
+.weather-icon-current {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0; 
+}
+
+/* --- THE KEY STYLING FOR "CLEAR SKY" ICON --- */
+/* This rule targets the image inside the container when it's "Clear Sky" */
+.attractive-icon-container .weather-icon-lg {
+    /* Filter removes the gray background circle and adds shadow ONLY to the sun/moon shape */
+    filter: drop-shadow(0 0 8px rgba(255, 235, 59, 0.8)); /* Subtle gold glow */
+    transform: scale(1.0); /* Remove the aggressive scale */
+    transition: filter 0.3s ease-out; /* Smooth transition */
+}
+
+/* Base large icon style */
+.weather-icon-lg {
+  width: 100%; 
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Base small icon style */
+.weather-icon-sm {
+  width: 50px; 
+  height: 50px;
+  object-fit: contain;
+  margin: 0 auto; 
+}
+
+
+.weather-info { flex:1; }
+.location-row { display:flex; justify-content:space-between; }
+.location { font-size:18px; font-weight:700; }
+.temp-big { font-size:44px; font-weight:800; }
+
+/* Styling for the description */
+.desc { 
+    font-size: 1.4em; 
+    font-weight: 600; 
+    color: #e0e0e0; 
+    margin-top: 10px;
+    padding: 5px 0;
+    text-align: left; 
+    text-transform: capitalize; 
+}
+
+/* This class for the text description is now irrelevant but kept for compatibility */
+.attractive-clear-sky {
+    color: #ffeb3b; 
+    text-shadow: 0 0 5px rgba(255, 235, 59, 0.5); 
+}
+
+.details { display:grid; grid-template-columns: repeat(2,1fr); gap:8px; margin-top:10px; }
+.detail-item { font-size:14px; background:rgba(255,255,255,0.06); padding:6px; border-radius:8px; }
+
+.forecast { display:flex; flex-direction:column; gap:12px; }
+.forecast-top { display:flex; justify-content:space-between; align-items:center; }
+.forecast-list { display:flex; gap:12px; overflow:auto; padding-bottom:8px; }
+.day { 
+    min-width:100px; 
+    text-align:center; 
+    padding:10px; 
+    border-radius:12px; 
+    background:rgba(255,255,255,0.05); 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+.theme-switch { display:flex; gap:6px; }
+.theme-btn { width:32px; height:32px; border:none; border-radius:8px; cursor:pointer; }
+
+.small { font-size:13px; opacity:0.85; }
+.small-muted { font-size:12px; opacity:0.7; }
+.error { color:#ffb4b4; background:rgba(255,120,120,0.1); padding:6px; border-radius:8px; margin-top:6px; }
+
+@media(max-width:880px) {
+  .container { grid-template-columns: 1fr; }
+}
